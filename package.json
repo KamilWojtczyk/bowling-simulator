@@ -1,0 +1,66 @@
+{
+  "name": "angular-task-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.11",
+    "@angular/cdk": "^14.2.7",
+    "@angular/common": "^14.2.11",
+    "@angular/compiler": "^14.2.11",
+    "@angular/core": "^14.2.11",
+    "@angular/forms": "^14.2.11",
+    "@angular/material": "^14.2.7",
+    "@angular/platform-browser": "^14.2.11",
+    "@angular/platform-browser-dynamic": "^14.2.11",
+    "@angular/router": "^14.2.11",
+    "@fortawesome/angular-fontawesome": "^0.10.2",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^14.3.2",
+    "@ngrx/router-store": "^14.3.2",
+    "@ngrx/schematics": "^14.3.2",
+    "@ngrx/store": "^14.3.2",
+    "@ngrx/store-devtools": "^14.3.2",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.10",
+    "@angular/cli": "^14.2.10",
+    "@angular/compiler-cli": "^14.2.11",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^12.11.1",
+    "jest": "^28.1.3",
+    "jest-preset-angular": "^12.2.2",
+    "karma-coverage": "~2.0.3",
+    "typescript": "~4.8.4"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "<rootDir>/tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$"
+      }
+    }
+}
+}

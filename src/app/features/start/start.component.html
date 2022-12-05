@@ -1,0 +1,70 @@
+<h2 class="main-title">Bowling symulator</h2>
+<card-component>
+  <mat-card class="card">
+    <mat-card-title class="card-title">Throw bowling balls</mat-card-title>
+    <form class="form" [formGroup]="form" (submit)="addNewFrame()">
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>First throw</mat-label>
+        <input formControlName="first" matInput type="number">
+        <mat-hint align="start"><strong>Type value between 0-10 </strong> </mat-hint>
+        <mat-error *ngIf="form.hasError('required')">
+          First throw <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.hasError('min')">
+          Min Value is <strong>0</strong>
+        </mat-error>
+        <mat-error *ngIf="form.hasError('max')">
+          Max Value is <strong>10</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>Second throw</mat-label>
+        <input formControlName="second" matInput type="number">
+        <mat-hint align="start"><strong>Type value between 0-10 </strong> </mat-hint>
+        <mat-error *ngIf="form.hasError('required')">
+          Second  throw<strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.hasError('min')">
+          Min Value is <strong>0</strong>
+        </mat-error>
+        <mat-error *ngIf="form.hasError('max')">
+          Max Value is <strong>10</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="(frames$ | async)?.length == 9" appearance="fill" class="field">
+        <mat-label>Third throw</mat-label>
+        <input [readonly]="form.value.first + form.value.second === 10 ? false: true" formControlName="third" matInput type="number">
+        <mat-hint align="start"><strong>Type value between 0-10 </strong> </mat-hint>
+      </mat-form-field>
+      <mat-card-actions class="buttons-container">
+        <button mat-stroked-button type="submit" class="button">Add</button>
+      </mat-card-actions>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+  </mat-card>
+</card-component>
+
+<card-component>
+  <mat-card class="card">
+    <div class="table">
+      <p>Score: {{score$ | async}}</p>
+      <p>Round: {{round$ | async}}</p>
+    </div>
+    <div class="results">
+      <div class="label-results">
+        <p>Round: </p>
+        <p>First throw: </p>
+        <p>Second throw: </p>
+        <p *ngIf="(frames$ | async)?.length == 10">Third throw: </p>
+      </div>
+      <ng-container *ngIf="(frames$ | async) as frames">
+        <div class="values-results" *ngFor="let frame of frames; index as i">
+          <p>{{i + 1}}</p>
+          <p>{{frame.first}}</p>
+          <p>{{frame.second}}</p>
+          <p *ngIf="frame.third">{{frame.third}}</p>
+        </div>
+      </ng-container>
+    </div>
+  </mat-card>
+</card-component>
